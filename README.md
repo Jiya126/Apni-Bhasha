@@ -1,4 +1,4 @@
-**Apni Bhasha**
+# Apni Bhasha
 
 Apni Bhasha is a streamlit application that allows users to have a conversation with a generative model in a choice of Indian languages. It takes in audio input and live video feed, and responds with audio output.
 
