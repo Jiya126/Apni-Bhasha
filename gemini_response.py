@@ -17,8 +17,8 @@ def save_temp_frame(frame, filename, directory='./temp'):
 
 
 def send_frame_with_text_to_gemini(frame, previous_texts, timestamp, user_input, client = genai):
-    ############### ENTER GEMINI API KEY ###################
-    genai.configure(api_key='ENTER YOUR KEY HERE')
+    ############# ENTER GEMINI API KEY ############
+    genai.configure(api_key='ADD KEY HERE')
     temp_file_path = save_temp_frame(frame, "temp.jpg")
     img = PIL.Image.open(temp_file_path)
 

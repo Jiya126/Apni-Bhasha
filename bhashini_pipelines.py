@@ -6,6 +6,7 @@ import wave
 import os
 from pydub import AudioSegment
 from pydub.playback import play
+# first try all with giving in the base64 input, we'll work out on taking input from user later
 
 def record_audio(stream, rate = 44100, frame_length = 1024, record_seconds = 5):
     print("Recording...")
@@ -21,7 +22,7 @@ def record_audio(stream, rate = 44100, frame_length = 1024, record_seconds = 5):
     print("Recording stopped.")
     return b''.join(frames)
 
-def save_wav(audio_data, directory='./temp', channels=1, sample_width=2, frame_rate=44100):
+def save_wav(audio_data, directory='./temp', channels=2, sample_width=2, frame_rate=44100):
     # Create the directory if it does not exist
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -35,8 +36,9 @@ def save_wav(audio_data, directory='./temp', channels=1, sample_width=2, frame_r
 
 
 
-############### ENTER BHASHINI INFERENCE API KEY ###################
-bhashini_api_key = 'ENTER YOUR KEY HERE'
+########### ENTER BHASHINI INFERENCE API KEY ###########
+bhashini_api_key = 'ADD KEY HERE'
+
 def bhashini_asr(base64_input, input_language):
     url = "https://dhruva-api.bhashini.gov.in/services/inference/pipeline"
     asr_serviceid_dict = {'bn': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4', 'en': 'ai4bharat/whisper-medium-en--gpu--t4', 'gu': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4', 'hi': 'ai4bharat/conformer-hi-gpu--t4', 'kn': 'ai4bharat/conformer-multilingual-dravidian-gpu--t4', 'ml': 'ai4bharat/conformer-multilingual-dravidian-gpu--t4', 'mr': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4', 'or': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4', 'pa': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4', 'sa': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4', 'ta': 'ai4bharat/conformer-multilingual-dravidian-gpu--t4', 'te': 'ai4bharat/conformer-multilingual-dravidian-gpu--t4', 'ur': 'ai4bharat/conformer-multilingual-indo_aryan-gpu--t4'}
@@ -133,8 +135,7 @@ def bhashini_tts(my_input, input_language):
             "sourceLanguage": input_language
             },
             "serviceId": tts_serviceid_val,
-            "gender": "female",
-            "samplingRate": 8000
+            "gender": "female"
         }
         }
     ],
